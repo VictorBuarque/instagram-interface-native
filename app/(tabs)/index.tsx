@@ -1,98 +1,258 @@
+import { feed, stories } from '@/constants/insta-data';
 import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { router } from 'expo-router';
+import { BookmarkIcon, Heart, MessageCircle, Plus, Send } from 'lucide-react-native';
+import { ScrollView, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+
 
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+  return (
+    <View style={styles.container}>
+      <View style={styles.headerContainer}>
+        <TouchableOpacity>
+          <Plus size={40} color="#FFFFFF" strokeWidth={2} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            router.push('/explore');
+          }}>
+          <Image source={require('@/assets/images/logo.svg')} style={styles.logo} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            router.push('/explore');
+          }}>
+          <Heart size={40} color="#FFFFFF" strokeWidth={2} />
+        </TouchableOpacity>
+
+      </View>
+      <View style={styles.storiesWrapper}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          style={styles.storiesContainer}
+          contentContainerStyle={styles.storiesContent}>
+          {/* Seu Story - com ícone de adicionar */}
+          <TouchableOpacity style={styles.storiesItem}>
+            <View style={styles.storiesItemImageWrapper}>
+              <View style={styles.storiesItemImageContainer}>
+                <Image source={require('@/assets/images/storie.jpeg')} style={styles.storiesItemImage} />
+              </View>
+              <View style={styles.addStoryIconContainer}>
+                <View style={styles.addStoryIconCircle}>
+                  <Plus size={16} color="#000000" strokeWidth={3} />
+                </View>
+              </View>
+            </View>
+            <Text style={styles.storiesItemUsername} numberOfLines={1} ellipsizeMode="tail">
+              Seu story
+            </Text>
+          </TouchableOpacity>
+          {/* Outros stories */}
+          {stories.map((story) => (
+            <TouchableOpacity key={story.id} style={styles.storiesItem}>
+              <View style={styles.storiesItemImageContainer}>
+                <Image source={story.image} style={styles.storiesItemImage} />
+              </View>
+              <Text style={styles.storiesItemUsername} numberOfLines={1} ellipsizeMode="tail">
+                {story.username}
+              </Text>
+            </TouchableOpacity>
+          ))}
+        </ScrollView>
+      </View>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        style={styles.feedScrollView}
+        contentContainerStyle={styles.feedContent}>
+        {feed.map((feedItem) => (
+          <View style={styles.feedItem} key={feedItem.id}>
+            <View style={styles.feedItemImageContainer}>
+              <Image source={feedItem.image} style={styles.feedItemImage} />
+            </View>
+            <View style={styles.feedItemActions}>
+              <View style={styles.feedItemActionsLeft}>
+                <TouchableOpacity>
+                  <Heart size={20} color="#FFFFFF" strokeWidth={2} />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <MessageCircle size={20} color="#FFFFFF" strokeWidth={2} />
+                </TouchableOpacity>
+                <TouchableOpacity>
+                  <Send size={20} color="#FFFFFF" strokeWidth={2} />
+                </TouchableOpacity>
+              </View>
+              <TouchableOpacity>
+                <BookmarkIcon size={20} color="#FFFFFF" strokeWidth={2} />
+              </TouchableOpacity>
+            </View>
+            <View style={styles.feedItemInfo}>
+              <Text style={styles.feedItemUsername} numberOfLines={1}>
+                {feedItem.username}
+              </Text>
+              <Text style={styles.feedItemTitle} numberOfLines={1}>
+                {feedItem.title}
+              </Text>
+              <Text style={styles.feedItemDescription} numberOfLines={2}>
+                {feedItem.description}
+              </Text>
+            </View>
+          </View>
+        ))}
+      </ScrollView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  container: {
+    flex: 1,
+    backgroundColor: 'black',
+  },
+  headerContainer: {
+    height: 56,
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    paddingVertical: 8,
+    marginTop: 56,
+    zIndex: 100,
+    elevation: 100,
+    backgroundColor: '#000000',
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  storiesWrapper: {
+    zIndex: 50,
+    elevation: 50,
+    backgroundColor: '#000000',
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
+  storiesContainer: {
+    paddingVertical: 12,
+
+  },
+  storiesContent: {
+    paddingHorizontal: 16,
+    gap: 20,
+    alignItems: 'flex-start',
+  },
+  storiesItem: {
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    width: 80,
+    paddingBottom: 0,
+  },
+  storiesItemImageWrapper: {
+    position: 'relative',
+    width: 80,
+    height: 80,
+    marginBottom: 4,
+  },
+  storiesItemImageContainer: {
+    width: 80,
+    height: 80,
+    borderRadius: 40,
+    borderWidth: 2,
+    borderColor: '#FFFFFF',
+    overflow: 'hidden',
+  },
+  storiesItemImage: {
+    width: 80,
+    height: 80,
+    resizeMode: 'cover',
+  },
+  addStoryIconContainer: {
     position: 'absolute',
+    bottom: 0,
+    right: 0,
+    width: 24,
+    height: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
+    zIndex: 10,
+    elevation: 10,
+  },
+  addStoryIconCircle: {
+    width: 24,
+    height: 24,
+    borderRadius: 12,
+    backgroundColor: '#FFFFFF',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 2,
+    borderColor: '#000000',
+  },
+  storiesItemUsername: {
+    color: '#FFFFFF',
+    fontSize: 12,
+    fontWeight: '400',
+    textAlign: 'center',
+    marginTop: 4,
+    width: 80,
+    includeFontPadding: false,
+    flexShrink: 1,
+    lineHeight: 16,
+  },
+  feedScrollView: {
+    flex: 1,
+    zIndex: 1,
+    elevation: 1,
+  },
+  feedContent: {
+    paddingBottom: 20,
+
+  },
+  feedItem: {
+    width: '100%',
+    marginBottom: 20,
+    backgroundColor: '#000000',
+  },
+  feedItemImageContainer: {
+    width: '100%',
+    aspectRatio: 1,
+    overflow: 'hidden',
+  },
+  feedItemActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 12,
+  },
+  feedItemActionsLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  feedItemImage: {
+    width: '100%',
+    height: '100%',
+    resizeMode: 'cover',
+  },
+  feedItemInfo: {
+    padding: 12,
+    gap: 4,
+  },
+  feedItemUsername: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  feedItemTitle: {
+    color: 'white',
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  feedItemDescription: {
+    color: '#CCCCCC',
+    fontSize: 14,
+    fontWeight: '400',
+    lineHeight: 20,
+  },
+  logo: {
+    marginTop: 10,
+    height: 100,
+    width: 160,
+    resizeMode: 'contain',
   },
 });
