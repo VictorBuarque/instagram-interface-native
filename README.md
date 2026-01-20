@@ -1,57 +1,57 @@
 # 📱 Instagram Interface Native
 
-Uma interface inspirada no Instagram construída com React Native e Expo, demonstrando uma implementação moderna de feed de posts, stories e interações sociais.
+An Instagram-inspired interface built with React Native and Expo, demonstrating a modern implementation of post feeds, stories, and social interactions.
 
 ## ✨ Features
 
-- 🎨 Interface moderna inspirada no Instagram
-- 📸 Feed de posts com imagens
-- 📖 Stories horizontais com scroll
-- ❤️ Ações de interação (curtir, comentar, compartilhar, salvar)
-- 🎯 Navegação com Expo Router
-- 🌙 Tema escuro nativo
-- 📱 Suporte para iOS, Android e Web
+- 🎨 Modern Instagram-inspired interface
+- 📸 Image post feed
+- 📖 Horizontal scrolling stories
+- ❤️ Interaction actions (like, comment, share, save)
+- 🎯 Navigation with Expo Router
+- 🌙 Native dark theme
+- 📱 Support for iOS, Android, and Web
 
-## 🛠️ Tecnologias
+## 🛠️ Technologies
 
-- **React Native** - Framework para desenvolvimento mobile
-- **Expo** - Plataforma para desenvolvimento React Native
-- **Expo Router** - Roteamento baseado em arquivos
-- **TypeScript** - Tipagem estática
-- **Lucide React Native** - Ícones modernos
-- **Expo Image** - Componente de imagem otimizado
+- **React Native** - Framework for mobile development
+- **Expo** - Platform for React Native development
+- **Expo Router** - File-based routing
+- **TypeScript** - Static typing
+- **Lucide React Native** - Modern icons
+- **Expo Image** - Optimized image component
 
-## 📋 Pré-requisitos
+## 📋 Prerequisites
 
-Antes de começar, você precisa ter instalado:
+Before you begin, you need to have installed:
 
-- [Node.js](https://nodejs.org/) (versão 18 ou superior)
-- [pnpm](https://pnpm.io/) (gerenciador de pacotes)
-- [Expo CLI](https://docs.expo.dev/get-started/installation/) (opcional, mas recomendado)
+- [Node.js](https://nodejs.org/) (version 18 or higher)
+- [pnpm](https://pnpm.io/) (package manager)
+- [Expo CLI](https://docs.expo.dev/get-started/installation/) (optional, but recommended)
 
-## 🚀 Instalação
+## 🚀 Installation
 
-1. Clone o repositório:
+1. Clone the repository:
 ```bash
 git clone https://github.com/VictorBuarque/instagram-interface-native.git
 cd instagram-interface-native
 ```
 
-2. Instale as dependências:
+2. Install dependencies:
 ```bash
 pnpm install
 ```
 
-## 🎮 Como Executar
+## 🎮 How to Run
 
-### Desenvolvimento
+### Development
 
-Inicie o servidor de desenvolvimento:
+Start the development server:
 ```bash
 pnpm start
 ```
 
-Ou use os comandos específicos:
+Or use specific commands:
 
 ```bash
 # Android
@@ -66,94 +66,94 @@ pnpm web
 
 ### Build
 
-Para criar uma build de produção, siga a [documentação do Expo](https://docs.expo.dev/build/introduction/).
+To create a production build, follow the [Expo documentation](https://docs.expo.dev/build/introduction/).
 
-## 📁 Estrutura do Projeto
+## 📁 Project Structure
 
 ```
 instagram-interface-native/
-├── app/                    # Rotas e telas (Expo Router)
-│   └── (tabs)/            # Navegação por tabs
-│       ├── index.tsx      # Tela principal (Home)
-│       └── explore.tsx    # Tela de exploração
-├── assets/                # Recursos estáticos
-│   └── images/           # Imagens do projeto
-├── components/            # Componentes reutilizáveis
-│   ├── themed-view.tsx   # Componente de view com tema
-│   └── ui/               # Componentes de UI
-├── constants/             # Constantes e dados
-│   └── insta-data.ts     # Dados mockados (feed e stories)
+├── app/                    # Routes and screens (Expo Router)
+│   └── (tabs)/            # Tab navigation
+│       ├── index.tsx      # Main screen (Home)
+│       └── explore.tsx    # Explore screen
+├── assets/                # Static resources
+│   └── images/           # Project images
+├── components/            # Reusable components
+│   ├── themed-view.tsx   # Themed view component
+│   └── ui/               # UI components
+├── constants/             # Constants and data
+│   └── insta-data.ts     # Mock data (feed and stories)
 └── hooks/                 # Custom hooks
 ```
 
-## 🎨 Componentes Principais
+## 🎨 Main Components
 
 ### Home Screen
-- Header com logo e ações
-- Scroll horizontal de stories
-- Feed vertical de posts
-- Ações de interação (curtir, comentar, compartilhar, salvar)
+- Header with logo and actions
+- Horizontal scrolling stories
+- Vertical post feed
+- Interaction actions (like, comment, share, save)
 
 ### Stories
-- Scroll horizontal
-- Ícone de adicionar story no primeiro item
-- Imagens circulares com bordas
-- Nomes de usuário abaixo das imagens
+- Horizontal scroll
+- Add story icon on the first item
+- Circular images with borders
+- Usernames below images
 
 ### Feed
-- Imagens em formato quadrado (aspect ratio 1:1)
-- Ações de interação
-- Informações do post (usuário, título, descrição)
+- Square format images (1:1 aspect ratio)
+- Interaction actions
+- Post information (user, title, description)
 
-## 📝 Scripts Disponíveis
+## 📝 Available Scripts
 
 ```bash
-pnpm start          # Inicia o servidor de desenvolvimento
-pnpm android        # Inicia no Android
-pnpm ios            # Inicia no iOS
-pnpm web            # Inicia no navegador
-pnpm lint           # Executa o linter
+pnpm start          # Start development server
+pnpm android        # Start on Android
+pnpm ios            # Start on iOS
+pnpm web            # Start on browser
+pnpm lint           # Run linter
 ```
 
-## 🔧 Configuração
+## 🔧 Configuration
 
-O projeto usa TypeScript e ESLint para garantir qualidade de código. As configurações estão em:
+The project uses TypeScript and ESLint to ensure code quality. Configuration files are located at:
 - `tsconfig.json` - TypeScript
-- `.eslintrc.js` - ESLint (se existir)
+- `.eslintrc.js` - ESLint (if exists)
 
-## 📱 Plataformas Suportadas
+## 📱 Supported Platforms
 
 - ✅ iOS
 - ✅ Android
 - ✅ Web
 
-## 🤝 Contribuindo
+## 🤝 Contributing
 
-Contribuições são bem-vindas! Sinta-se à vontade para:
+Contributions are welcome! Feel free to:
 
-1. Fazer um Fork do projeto
-2. Criar uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
-3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
-4. Push para a branch (`git push origin feature/AmazingFeature`)
-5. Abrir um Pull Request
+1. Fork the project
+2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## 📄 Licença
+## 📄 License
 
-Este projeto é privado.
+This project is private.
 
-## 👤 Autor
+## 👤 Author
 
 **Victor Buarque**
 
 - GitHub: [@VictorBuarque](https://github.com/VictorBuarque)
 - Email: vcgabriel38@gmail.com
 
-## 🙏 Agradecimentos
+## 🙏 Acknowledgments
 
-- [Expo](https://expo.dev/) pela plataforma incrível
-- [React Native](https://reactnative.dev/) pela framework
-- [Lucide](https://lucide.dev/) pelos ícones
+- [Expo](https://expo.dev/) for the amazing platform
+- [React Native](https://reactnative.dev/) for the framework
+- [Lucide](https://lucide.dev/) for the icons
 
 ---
 
-⭐ Se este projeto foi útil para você, considere dar uma estrela no repositório!
+⭐ If this project was useful to you, consider giving it a star on the repository!
